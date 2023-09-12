@@ -16,27 +16,27 @@ IQZ,2015-10-6,notes,Invalid,UNKNOWN
 
 // Convert the provided data into an array of objects which is sorted by the Date
 function parseData(csvData) {
-	const lines = csvData.trim().split('\n');
-	const headers = lines.shift().split(',');
-	const result = [];
+  const lines = csvData.trim().split('\n');
+  const headers = lines.shift().split(',');
+  const result = [];
 
-	// Iterate through each line and convert it into an object
-	lines.forEach(line => {
-	  const values = line.split(',');
-	  const obj = {};
-	  headers.forEach((header, index) => {
-	    obj[header] = values[index];
-	  });
-	  result.push(obj);
-	});
+  // Iterate through each line and convert it into an object
+  lines.forEach(line => {
+    const values = line.split(',');
+    const obj = {};
+    headers.forEach((header, index) => {
+      obj[header] = values[index];
+    });
+    result.push(obj);
+  });
 
-	// Sort the array of objects by date
-	result.sort((a, b) => {
-	  const dateA = new Date(a.Date);
-	  const dateB = new Date(b.Date);
-	  return dateA - dateB;
-	});
-	return result;
+  // Sort the array of objects by date
+  result.sort((a, b) => {
+    const dateA = new Date(a.Date);
+    const dateB = new Date(b.Date);
+    return dateA - dateB;
+  });
+  return result;
 }
 
 // The core function for the test: using a single loop to iterate through the data once and keep track of the largest increase for each company. 
@@ -64,7 +64,7 @@ function findLargestIncrease(result) {
         }
         // Here is the point, we record the largest increase data of specific company
         if (increase > largestIncreaseData.increased) {
-        	largestIncreaseData.name = companyName;
+          largestIncreaseData.name = companyName;
           largestIncreaseData.increased = increase;
         }
       }
